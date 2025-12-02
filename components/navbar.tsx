@@ -42,7 +42,7 @@ export function Navbar() {
           <nav className="flex items-center space-x-2">
             <ThemeToggle />
 
-            {session?.user ? (
+            {session?.user && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -77,10 +77,6 @@ export function Navbar() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-            ) : (
-              <Button asChild variant="outline">
-                <Link href="/auth/signin">Sign in</Link>
-              </Button>
             )}
           </nav>
         </div>
