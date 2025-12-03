@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   ChatMessage,
   ExtractedMemory,
@@ -35,6 +36,12 @@ export default function Home() {
   const [isExtracting, setIsExtracting] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isGeneratingAll, setIsGeneratingAll] = useState(false);
+
+  const motionProps = (delay = 0) => ({
+    initial: { y: 20, opacity: 0, filter: "blur(10px)" },
+    animate: { y: 0, opacity: 1, filter: "blur(0px)" },
+    transition: { delay, duration: 0.6 },
+  });
 
   const handleExtract = async (chatMessages: ChatMessage[]) => {
     setIsExtracting(true);
@@ -158,7 +165,10 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       {/* GitHub Repo Button */}
       <div className="border-b bg-muted/50">
-        <div className="container mx-auto px-4 py-4">
+        <motion.div
+          className="container mx-auto px-4 py-4"
+          {...motionProps(0.05)}
+        >
           <div className="flex justify-center">
             <Button asChild size="lg" className="gap-2 text-base font-semibold">
               <a
@@ -183,12 +193,15 @@ export default function Home() {
               </a>
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Header */}
       <div className="border-b">
-        <div className="container mx-auto px-4 py-4 md:py-6">
+        <motion.div
+          className="container mx-auto px-4 py-4 md:py-6"
+          {...motionProps(0.1)}
+        >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex-1 min-w-0">
               <h1 className="text-xl md:text-3xl font-bold flex items-center gap-2 md:gap-3 flex-wrap">
@@ -214,12 +227,15 @@ export default function Home() {
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Flow Diagram */}
       <div className="border-b bg-muted/30">
-        <div className="container mx-auto px-4 py-8">
+        <motion.div
+          className="container mx-auto px-4 py-8"
+          {...motionProps(0.15)}
+        >
           <div className="max-w-5xl mx-auto">
             <h2 className="text-xl font-semibold mb-6 text-center">
               How It Works
@@ -286,14 +302,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto space-y-8">
           {/* Step 1: Input */}
-          <div>
+          <motion.div {...motionProps(0.2)}>
             <div className="flex items-center gap-3 mb-4">
               <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-bold">
                 1
@@ -301,11 +317,11 @@ export default function Home() {
               <h2 className="text-xl font-semibold">Input Conversation</h2>
             </div>
             <ChatInput onExtract={handleExtract} isLoading={isExtracting} />
-          </div>
+          </motion.div>
 
           {/* Step 2: Extracted Memories */}
           {step !== "input" && extractedMemories && (
-            <div id="memories-section">
+            <motion.div id="memories-section" {...motionProps(0.25)}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-bold">
                   2
@@ -313,12 +329,12 @@ export default function Home() {
                 <h2 className="text-xl font-semibold">Extracted Memories</h2>
               </div>
               <MemoryDisplay memories={extractedMemories} />
-            </div>
+            </motion.div>
           )}
 
           {/* Step 3: Query & Personality Selection */}
           {step === "extracted" && extractedMemories && (
-            <div>
+            <motion.div {...motionProps(0.3)}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-bold">
                   3
@@ -330,12 +346,12 @@ export default function Home() {
                 isLoading={isGenerating}
                 isGeneratingAll={isGeneratingAll}
               />
-            </div>
+            </motion.div>
           )}
 
           {/* Step 4: Responses */}
           {step === "responses" && responses.length > 0 && (
-            <div id="responses-section">
+            <motion.div id="responses-section" {...motionProps(0.35)}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-bold">
                   4
@@ -356,7 +372,7 @@ export default function Home() {
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </div>
-            </div>
+            </motion.div>
           )}
         </div>
       </div>

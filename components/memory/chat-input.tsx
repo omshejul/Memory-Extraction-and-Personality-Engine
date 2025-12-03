@@ -87,18 +87,20 @@ export function ChatInput({ onExtract, isLoading = false }: ChatInputProps) {
           <label htmlFor="conversation" className="text-sm font-medium">
             Conversation Text
           </label>
-          <Textarea
-            id="conversation"
-            placeholder="User: Hi, I've been feeling stressed about work lately...
-
-AI: I understand. Tell me more about what's been going on.
-
-User: Well, I have these project deadlines..."
-            value={rawText}
-            onChange={(e) => handleTextChange(e.target.value)}
-            className="min-h-[300px] font-mono text-sm"
-            disabled={isLoading}
-          />
+          <div className="max-h-[60vh] p-2 overflow-y-auto scroll-thin">
+            <Textarea
+              id="conversation"
+              placeholder="User: Hi, I've been feeling stressed about work lately...
+ 
+ AI: I understand. Tell me more about what's been going on.
+ 
+ User: Well, I have these project deadlines..."
+              value={rawText}
+              onChange={(e) => handleTextChange(e.target.value)}
+              className="min-h-[300px] font-mono text-sm resize-none"
+              disabled={isLoading}
+            />
+          </div>
           <p className="text-xs text-muted-foreground wrap-break-words">
             Format: Start each message with "User:" or "AI:" followed by the
             message content
