@@ -86,8 +86,8 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                     {memories.preferences.hobbies.map((hobby, index) => (
                       <Badge
                         key={index}
-                        variant="secondary"
-                        className="wrap-break-words max-w-full"
+                        variant="outline"
+                        className="wrap-wrap-break-words max-w-full"
                       >
                         {hobby}
                       </Badge>
@@ -106,8 +106,8 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                     {memories.preferences.likes.map((like, index) => (
                       <Badge
                         key={index}
-                        variant="secondary"
-                        className="break-words max-w-full"
+                        variant="outline"
+                        className="wrap-break-words max-w-full"
                       >
                         {like}
                       </Badge>
@@ -127,7 +127,7 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                       <Badge
                         key={index}
                         variant="outline"
-                        className="break-words max-w-full"
+                        className="wrap-break-words max-w-full"
                       >
                         {dislike}
                       </Badge>
@@ -144,7 +144,7 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                   </div>
                   <ul className="space-y-1 ml-6 list-disc">
                     {memories.preferences.habits.map((habit, index) => (
-                      <li key={index} className="text-sm wrap-break-words">
+                      <li key={index} className="text-sm wrap-wrap-break-words">
                         {habit}
                       </li>
                     ))}
@@ -179,12 +179,12 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                       (emotion, index) => (
                         <Badge
                           key={index}
-                          variant="secondary"
-                          className="break-words max-w-full"
+                          variant="outline"
+                          className="wrap-break-words max-w-full"
                         >
                           {emotion}
                         </Badge>
-                      ),
+                      )
                     )}
                   </div>
                 </div>
@@ -196,10 +196,13 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                   <ul className="space-y-1 ml-6 list-disc">
                     {memories.emotionalPatterns.stressTriggers.map(
                       (trigger, index) => (
-                        <li key={index} className="text-sm wrap-break-words">
+                        <li
+                          key={index}
+                          className="text-sm wrap-wrap-break-words"
+                        >
                           {trigger}
                         </li>
-                      ),
+                      )
                     )}
                   </ul>
                 </div>
@@ -210,7 +213,7 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                   <h4 className="font-medium mb-2">Joy Sources</h4>
                   <ul className="space-y-1 ml-6 list-disc">
                     {memories.emotionalPatterns.joySources.map((joy, index) => (
-                      <li key={index} className="text-sm wrap-break-words">
+                      <li key={index} className="text-sm wrap-wrap-break-words">
                         {joy}
                       </li>
                     ))}
@@ -254,7 +257,7 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                   </div>
                   <ul className="space-y-1 ml-6 list-disc">
                     {memories.facts.personalDetails.map((detail, index) => (
-                      <li key={index} className="text-sm wrap-break-words">
+                      <li key={index} className="text-sm wrap-wrap-break-words">
                         {detail}
                       </li>
                     ))}
@@ -270,7 +273,7 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                   </div>
                   <ul className="space-y-1 ml-6 list-disc">
                     {memories.facts.relationships.map((relationship, index) => (
-                      <li key={index} className="text-sm wrap-break-words">
+                      <li key={index} className="text-sm wrap-wrap-break-words">
                         {relationship}
                       </li>
                     ))}
@@ -286,7 +289,7 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                   </div>
                   <ul className="space-y-1 ml-6 list-disc">
                     {memories.facts.goals.map((goal, index) => (
-                      <li key={index} className="text-sm wrap-break-words">
+                      <li key={index} className="text-sm wrap-wrap-break-words">
                         {goal}
                       </li>
                     ))}
@@ -304,8 +307,8 @@ export function MemoryDisplay({ memories }: MemoryDisplayProps) {
                     {memories.facts.values.map((value, index) => (
                       <Badge
                         key={index}
-                        variant="secondary"
-                        className="break-words max-w-full"
+                        variant="outline"
+                        className="wrap-break-words max-w-full"
                       >
                         {value}
                       </Badge>
